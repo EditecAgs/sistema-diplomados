@@ -1,6 +1,6 @@
 <footer class="w-full bg-[#0f0208]">
 
-  <div class="max-w-5xl mx-auto px-6 pt-14 pb-10 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-12">
+  <div class="max-w-7xl mx-auto px-6 pt-14 pb-10 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-12">
 
     <div>
       @if (count($logos))
@@ -8,9 +8,9 @@
         @foreach ($logos as $i => $logo)
           <img src="{{ asset($logo['src']) }}"
                alt="{{ $logo['alt'] }}"
-               class="h-6 w-auto">
+               class="h-8 w-auto">
           @if (!$loop->last)
-            <div class="w-px h-4 bg-white/15"></div>
+            <div class="w-px h-4 bg-white"></div>
           @endif
         @endforeach
       </div>
@@ -23,7 +23,6 @@
       </p>
     </div>
 
-    {{-- Navegación --}}
     <div>
       <p class="text-[10px] font-semibold tracking-[2px] uppercase text-rose-300 mb-4">
         Navegación
@@ -40,7 +39,6 @@
       </ul>
     </div>
 
-    {{-- Contacto --}}
     <div>
       <p class="text-[10px] font-semibold tracking-[2px] uppercase text-rose-300 mb-4">
         Contacto
@@ -84,20 +82,14 @@
 
   </div>
 
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="h-px bg-[#611232]/25"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="h-px bg-[#611232]"></div>
   </div>
 
   <div class="max-w-5xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
     <p class="text-[12px] text-gray-200">
-      © {{ $anio }} <span class="text-rose-300">TecNM / ITA</span> — Todos los derechos reservados
+      © {{ $anio }} <span class="text-rose-300">Micrositio desarrollado por Educación a Distancia (ITA)</span> — Todos los derechos reservados
     </p>
-    <div class="flex items-center gap-2">
-      <div class="w-1.5 h-1.5 rounded-full bg-[#611232]"></div>
-      <span class="text-[11px] tracking-wide uppercase text-gray-200">
-        {{ $programa }}
-      </span>
-    </div>
   </div>
 
 </footer>

@@ -24,6 +24,8 @@ export function initModulos() {
                 card.dataset.nombre;
             document.getElementById("modal-sub").textContent =
                 card.dataset.short;
+            document.getElementById("modal-description").textContent =
+                card.dataset.description;
             document.getElementById("modal-topics").innerHTML = temas
                 .map(
                     (t) => `
