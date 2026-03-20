@@ -20,7 +20,7 @@
         </a>
       </li>
       <li>
-        <a href="{{ $convocatoria }}"
+        <a href="{{ $convocatoria }}" target="_blank"
            class="relative block py-2 px-3 text-white text-sm rounded hover:bg-white/10 lg:hover:bg-transparent group overflow-hidden">
           Convocatoria
           <span class="absolute bottom-0 left-3 right-3 h-0.5 bg-white/70 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>

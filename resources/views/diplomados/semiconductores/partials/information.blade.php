@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex flex-col gap-5">
                     <p class="text-[15px] text-[#3d1020] leading-relaxed border-l-[3px] border-[#611232] pl-4">
-                        Este diplomado ofrece una oportunidad única para recorrer de manera integral el proceso real de diseño de ASICs, desde la definición de requerimientos funcionales hasta el tapeout y la validación post silicio, utilizando metodologías y flujos alineados con la práctica industrial actual.
+                        Este diplomado ofrece una oportunidad única para recorrer de manera integral el proceso real de diseño de ASICs, desde la definición de requerimientos funcionales hasta el tapeout y *la validación post silicio, utilizando metodologías y flujos alineados con la práctica industrial actual.
                     </p>
                     <p class="text-[13.5px] text-[#6b4050] leading-relaxed bg-[#611232]/5 rounded-lg px-4 py-3">
                         Proporcionar a los participantes una formación integral y estructurada sobre el proceso completo de diseño de circuitos integrados de aplicación específica (ASICs), abarcando desde la definición de características y requerimientos del sistema, el diseño lógico y físico, la verificación funcional, hasta la preparación para tapeout, empleando flujos, metodologías y buenas prácticas utilizadas en la industria de semiconductores.

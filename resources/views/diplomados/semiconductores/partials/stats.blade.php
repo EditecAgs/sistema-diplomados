@@ -9,7 +9,7 @@
 
       @foreach ([
         ['icon' => 'clock',   'value' => '120', 'unit' => 'hrs', 'desc' => 'Duración'],
-        ['icon' => 'grid',    'value' => '5',   'unit' => '',    'desc' => 'Módulos'],
+        ['icon' => 'grid',    'value' => '4',   'unit' => '',    'desc' => 'Módulos'],
         ['icon' => 'monitor', 'value' => 'Teórico-práctica', 'unit' => '', 'desc' => 'Modalidad'],
         ['icon' => 'users',   'value' => 'Abierto', 'unit' => '', 'desc' => 'Profesionistas y Docentes'],
       ] as $stat)

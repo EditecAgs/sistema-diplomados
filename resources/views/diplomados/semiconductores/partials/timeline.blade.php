@@ -42,14 +42,21 @@
           @endif
 
           {{-- Encabezado --}}
-          <div class="flex items-start justify-between gap-3 flex-wrap">
-            <p class="text-[13px] font-semibold text-white leading-snug">
-              {{ $fecha['etiqueta'] }}
-            </p>
-            <span class="text-[11px] text-rose-300 bg-[#611232]/30 border border-rose-300/20 rounded-full px-3 py-0.5 whitespace-nowrap flex-shrink-0">
+        <div class="flex items-start justify-between gap-3 flex-wrap">
+          <p class="text-[13px] font-semibold text-white leading-snug">
+            {{ $fecha['etiqueta'] }}
+          </p>
+          <div class="flex flex-col items-end gap-1 shrink-0">
+            @if (!empty($fecha['dia']))
+              <span class="text-[12px] font-bold text-white bg-[#611232] border border-rose-300/30 rounded-full px-3 py-0.5 whitespace-nowrap">
+                {{ $fecha['dia'] }}
+              </span>
+            @endif
+            <span class="text-[11px] text-rose-300 bg-[#611232]/30 border border-rose-300/20 rounded-full px-3 py-0.5 whitespace-nowrap">
               {{ $fecha['mes'] }}
             </span>
           </div>
+        </div>
 
           {{-- Descripción --}}
           @if ($fecha['desc'])

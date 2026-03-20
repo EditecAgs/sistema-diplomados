@@ -88,7 +88,8 @@ class SemiconductoresController extends Controller
         $fechas = [
             [
                 'etiqueta' => 'Publicación de la convocatoria',
-                'fecha'    => '18',
+                'fecha'    => '21',
+                'dia'      => 'Sábado 21',
                 'mes'      => 'Marzo 2026',
                 'definida' => true,
                 'highlight'=> true,
@@ -100,6 +101,7 @@ class SemiconductoresController extends Controller
             [
                 'etiqueta' => 'Inicio del diplomado',
                 'fecha'    => '13',
+                'dia'      => 'Lunes 13',
                 'mes'      => 'Abril 2026',
                 'definida' => true,
                 'highlight'=> true,
@@ -179,7 +181,7 @@ class SemiconductoresController extends Controller
             ['label' => 'Fechas',             'href' => route('index') . '#dates'],
             ['label' => 'Convocatoria',       'href' => '#'],
         ];
-        $emailContacto = "prueba@mail.com";
+        $emailContacto = "diplomado_asic@aguascalientes.tecnm.mx";
         $title = "Diplomado en Diseño de Circuitos Integrados de Aplicación Específica";
 
         return view('diplomados.semiconductores.index' , compact('modulos', 'investigadores', 'fechas', 'footerLogos', 'footerLinks', 'emailContacto', 'title'));
@@ -318,6 +320,6 @@ class SemiconductoresController extends Controller
             Log::error('Error enviando correo de inscripción ID ' . $inscription->id . ': ' . $e->getMessage());
         }
 
-        return back()->with('success', '¡Tu solicitud fue enviada correctamente! Nos pondremos en contacto contigo pronto.');
+        return back()->with('success', '¡Tu solicitud fue enviada correctamente! Nos pondremos en contacto contigo pronto. Si tienes alguna duda comunícate al correo diplomado_asic@aguascalientes.tecnm.mx');
     }
 }

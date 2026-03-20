@@ -159,7 +159,7 @@
       <p class="intro">
         Hemos recibido correctamente tu solicitud de inscripción para el
         <strong>Diplomado en Diseño de Circuitos Integrados de Aplicación Específica (ASICs):
-        del concepto al tapeout</strong>, ofrecido por el Tecnológico Nacional de México
+        del concepto al tapeout</strong>, ofrecido por ANUIES y el Tecnológico Nacional de México
         a través del Instituto Tecnológico de Aguascalientes.
       </p>
 
@@ -193,8 +193,7 @@
         <div class="step">
           <div class="step-num">4</div>
           <p>
-            Si tu solicitud no es aprobada, también te notificaremos indicando
-            el motivo.
+            En caso de no ser aprobada tu solicitud, te notificaremos.
           </p>
         </div>
       </div>
@@ -238,7 +237,7 @@
       <div class="contact-box">
         <p class="contact-title">Contacto</p>
         <div class="contact-item">
-          <p>- Correo: <a href="mailto:prueba@mail.com">prueba@mail.com</a></p>
+          <p>- Correo: <a href="mailto:diplomado_asic@aguascalientes.tecnm.mx">diplomado_asic@aguascalientes.tecnm.mx</a></p>
         </div>
         <div class="contact-item">
           <p style="color: rgba(255,255,255,0.6);">- Instituto Tecnológico de Aguascalientes</p>

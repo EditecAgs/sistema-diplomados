@@ -14,7 +14,7 @@
         </p>
 
         <div class="flex flex-wrap gap-3 justify-center">
-            <a href="" class="inline-flex items-center gap-2 bg-[#611232] hover:bg-[#7a1740] text-white font-semibold text-sm px-6 py-3 rounded-lg border border-rose-300/20 transition-all duration-200 hover:-translate-y-0.5">
+            <a href="{{ asset('documents/DiplomadoASICS_Convocatoria.pdf') }}" download class="inline-flex items-center gap-2 bg-[#611232] hover:bg-[#7a1740] text-white font-semibold text-sm px-6 py-3 rounded-lg border border-rose-300/20 transition-all duration-200 hover:-translate-y-0.5">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                     <polyline points="7 10 12 15 17 10"/>

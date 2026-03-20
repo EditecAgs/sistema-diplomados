@@ -2,7 +2,7 @@
 @section('content')
     <x-header 
         :inicio="route('semiconductores.index')"
-        :convocatoria="route('semiconductores.index')"
+        :convocatoria="asset('documents/DiplomadoASICS_Convocatoria.pdf')"
         :plataforma="route('login')"
         :registro="route('semiconductores.register')"
     />

@@ -18,7 +18,7 @@
     </h2>
 
     <div class="flex flex-wrap gap-3 justify-center">
-      <a href=""
+      <a href="{{ asset('documents/DiplomadoASICS_Convocatoria.pdf') }}" download
          class="inline-flex items-center gap-2 bg-white hover:bg-rose-100 text-[#611232] font-bold text-sm px-7 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
