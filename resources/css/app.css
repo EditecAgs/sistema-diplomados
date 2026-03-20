@@ -9,3 +9,46 @@
 @theme {
     --font-sans: "Montserrat", sans-serif;
 }
+
+.btn-gold-outline {
+    background: rgba(185, 146, 91, 0.12);
+    color: #d4a96a;
+    border: 1px solid rgba(185, 146, 91, 0.4);
+    transition: all 0.2s;
+}
+.btn-gold-outline:hover {
+    background: linear-gradient(135deg, #b9925b, #d4a96a, #9a7440);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(185, 146, 91, 0.3);
+}
+
+.ts-wrapper .ts-control {
+    border: 1px solid rgba(97, 18, 50, 0.35);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #1f2937;
+    background: white;
+    box-shadow: none;
+}
+.ts-wrapper.focus .ts-control {
+    border-color: #e11d48;
+    box-shadow: none;
+}
+.ts-dropdown {
+    border: 1px solid rgba(97, 18, 50, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(97, 18, 50, 0.1);
+    font-size: 13px;
+}
+.ts-dropdown .option:hover,
+.ts-dropdown .option.active {
+    background: #611232;
+    color: white;
+}
+.ts-dropdown .option.selected {
+    background: rgba(97, 18, 50, 0.08);
+    color: #611232;
+    font-weight: 600;
+}

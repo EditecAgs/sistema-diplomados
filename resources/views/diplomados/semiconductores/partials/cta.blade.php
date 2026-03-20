@@ -18,7 +18,7 @@
     </h2>
 
     <div class="flex flex-wrap gap-3 justify-center">
-      <a href=""
+      <a href="{{ asset('documents/DiplomadoASICS_Convocatoria.pdf') }}" download
          class="inline-flex items-center gap-2 bg-white hover:bg-rose-100 text-[#611232] font-bold text-sm px-7 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -37,16 +37,13 @@
       </a>
     </div>
 
-    {{-- Logos institucionales --}}
-    <div class="flex items-center justify-center gap-5 mt-12 pt-8 border-t border-white/10">
-      <img src="{{ asset('images/gob-blanco.png') }}" alt="Gobierno de México" class="h-8">
-      <div class="w-px h-4 bg-white/15"></div>
-      <img src="{{ asset('images/sep-blanco.png') }}" alt="SEP" class="h-8">
-      <div class="w-px h-4 bg-white/15"></div>
-      <img src="{{ asset('images/logo_tecnm_white.png') }}" alt="TECNM" class="h-8">
-      <div class="w-px h-4 bg-white/15"></div>
-      <img src="{{ asset('images/ita.png') }}" alt="ITA" class="h-8">
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 mt-12 pt-8 border-t border-white">
+      <img src="{{ asset('images/gob-blanco.png') }}" alt="Gobierno de México" class="h-8 w-auto">
+      <img src="{{ asset('images/sep-blanco.png') }}" alt="SEP" class="h-8 w-auto opacity">
+      <img src="{{ asset('images/logo_tecnm_white.png') }}" alt="TECNM"             class="h-8 w-auto">
+      <img src="{{ asset('images/ita.png') }}" alt="ITA" class="h-8 w-auto">
+      <img src="{{ asset('images/ead.png') }}" alt="EAD" class="h-8 w-auto">
+      <img src="{{ asset('images/sm.png') }}"  alt="SM"  class="h-8 w-auto">
     </div>
-
   </div>
 </section>

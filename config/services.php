@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'moodle' => [
+        'url' => env('MOODLE_URL'),
+    ],
+
 ];

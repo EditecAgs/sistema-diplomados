@@ -1,90 +1,98 @@
-<section class="w-full bg-[#1a0510] py-20 px-6">
-  <div class="max-w-5xl mx-auto">
+<section class="w-full bg-[#1a0510] py-20 px-6" id="dates">
+  <div class="max-w-3xl mx-auto">
 
-    <p class="text-[11px] font-medium tracking-[2.5px] uppercase text-rose-300/60 mb-2 text-center">
+    <p class="text-[11px] font-medium tracking-[2.5px] uppercase text-rose-300/50 mb-2 text-center">
       Calendario
     </p>
     <h2 class="text-3xl font-semibold text-white mb-14 text-center">
       Fechas importantes
     </h2>
 
-    {{-- Timeline desktop --}}
-    <div class="relative hidden md:flex justify-between items-start px-16">
+    <div class="relative pl-8">
 
-      {{-- Línea de fondo --}}
-      <div class="absolute top-5.25 left-21.25 right-21.25 h-0.5 bg-[#611232]/30"></div>
+      {{-- Línea vertical --}}
+      <div class="absolute left-[7px] top-1.5 bottom-1.5 w-0.5 bg-[#611232]/40"></div>
 
-      @foreach ($fechas as $i => $fecha)
-      <div class="flex flex-col items-center gap-3 w-32 z-10">
+      @foreach ($fechas as $fecha)
+      <div class="relative mb-8 last:mb-0">
 
         {{-- Punto --}}
-        <div class="relative w-10.5 h-10.5 flex items-center justify-content">
+        <div class="absolute -left-8 top-1 w-4 h-4 flex items-center justify-center">
           @if ($fecha['definida'])
-            <span class="absolute w-10.5 h-10.5 rounded-full border-2 border-[#f0a0b8]/40 animate-ping"></span>
-            <span class="relative w-4.5 h-4.5 rounded-full bg-[#611232] border-2 border-[#f0a0b8] flex items-center justify-center mx-auto">
+            <span class="absolute w-4 h-4 rounded-full border border-rose-300/30 animate-ping"></span>
+            <span class="relative w-4 h-4 rounded-full bg-[#611232] border-2 border-[#f0a0b8] flex items-center justify-center z-10">
               <span class="w-1.5 h-1.5 rounded-full bg-[#f0a0b8]"></span>
             </span>
           @else
-            <span class="relative w-4.5 h-4.5 rounded-full bg-[#3d1030] border-2 border-[#611232]/50 flex items-center justify-center mx-auto">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#f0a0b8]/20"></span>
-            </span>
+            <span class="w-4 h-4 rounded-full bg-[#3d1030] border-2 border-[#611232]/50 z-10"></span>
           @endif
         </div>
 
-        {{-- Etiqueta --}}
-        <p class="text-[12px] font-semibold tracking-wide uppercase text-center leading-tight
-                   {{ $fecha['definida'] ? 'text-rose-300' : 'text-rose-300' }}">
-          {{ $fecha['etiqueta'] }}
-        </p>
+        {{-- Tarjeta --}}
+        <div class="rounded-xl px-5 py-4 border transition-colors
+                    {{ $fecha['highlight']
+                        ? 'bg-[#611232]/15 border-rose-300/20'
+                        : 'bg-white/5 border-[#611232]/30' }}">
 
-        {{-- Fecha o guión --}}
-        <p class="text-[18px] font-semibold text-center
-                   {{ $fecha['definida'] ? 'text-white' : 'text-gray-200' }}">
-          {{ $fecha['fecha'] ?? '—' }}
-        </p>
+          {{-- Badge módulo --}}
+          @if ($fecha['modulo'])
+            <span class="inline-block text-[10px] font-semibold tracking-[1px] uppercase text-rose-300 bg-[#611232]/25 border border-rose-300/15 rounded px-2 py-0.5 mb-2">
+              Módulo {{ $fecha['modulo'] }}
+            </span>
+          @endif
 
-        {{-- Badge --}}
-        <span class="text-[10px] rounded-full px-3 py-0.5 whitespace-nowrap
-                     {{ $fecha['definida']
-                        ? 'bg-[#611232]/40 border border-[#611232]/60 text-rose-300'
-                        : 'bg-[#611232]/20 border border-[#611232]/30 text-rose-300/40' }}">
-          {{ $fecha['definida'] ? $fecha['mes'] : 'Por definir' }}
-        </span>
-
-      </div>
-      @endforeach
-
-    </div>
-
-    {{-- Timeline móvil --}}
-    <div class="flex flex-col md:hidden divide-y divide-[#611232]/15">
-      @foreach ($fechas as $fecha)
-      <div class="flex items-center gap-4 py-4">
-        <div class="w-[18px] h-[18px] rounded-full flex-shrink-0
-                    {{ $fecha['definida'] ? 'bg-[#611232] border-2 border-[#f0a0b8]' : 'bg-[#3d1030] border-2 border-[#611232]/50' }}">
-        </div>
-        <div>
-          <p class="text-[11px] font-semibold tracking-wide uppercase
-                     {{ $fecha['definida'] ? 'text-rose-300' : 'text-white/35' }}">
+          {{-- Encabezado --}}
+        <div class="flex items-start justify-between gap-3 flex-wrap">
+          <p class="text-[13px] font-semibold text-white leading-snug">
             {{ $fecha['etiqueta'] }}
           </p>
-          <p class="text-[15px] font-semibold {{ $fecha['definida'] ? 'text-white' : 'text-white/20' }}">
-            {{ $fecha['definida'] ? $fecha['mes'] . ' ' . $fecha['fecha'] : 'Por definir' }}
-          </p>
+          <div class="flex flex-col items-end gap-1 shrink-0">
+            @if (!empty($fecha['dia']))
+              <span class="text-[12px] font-bold text-white bg-[#611232] border border-rose-300/30 rounded-full px-3 py-0.5 whitespace-nowrap">
+                {{ $fecha['dia'] }}
+              </span>
+            @endif
+            <span class="text-[11px] text-rose-300 bg-[#611232]/30 border border-rose-300/20 rounded-full px-3 py-0.5 whitespace-nowrap">
+              {{ $fecha['mes'] }}
+            </span>
+          </div>
+        </div>
+
+          {{-- Descripción --}}
+          @if ($fecha['desc'])
+            <p class="text-[12.5px] text-gray-300 mt-2 leading-relaxed">
+              {{ $fecha['desc'] }}
+            </p>
+          @endif
+
+          {{-- Sesiones --}}
+          @if (count($fecha['sesiones']))
+            <div class="mt-3 pt-3 border-t border-[#611232]/20 flex flex-col gap-1.5">
+              @foreach ($fecha['sesiones'] as $sesion)
+                <div class="flex items-start gap-2 text-[11.5px] text-gray-300">
+                  <div class="w-1 h-1 rounded-full bg-[#611232] mt-1.5 shrink-0"></div>
+                  {{ $sesion }}
+                </div>
+              @endforeach
+            </div>
+          @endif
+
+          {{-- Opciones de semana presencial --}}
+          @if (count($fecha['opciones']))
+            <div class="flex gap-2 flex-wrap mt-3">
+              @foreach ($fecha['opciones'] as $opcion)
+                <span class="text-[11px] bg-[#B9925B]/10 border border-[#B9925B]/25 text-[#d4a96a] rounded-md px-3 py-1">
+                  {{ $opcion }}
+                </span>
+              @endforeach
+            </div>
+          @endif
+
         </div>
       </div>
       @endforeach
-    </div>
 
-    {{-- Aviso --}}
-    @if (collect($fechas)->where('definida', false)->count() > 0)
-    <p class="text-center mt-12">
-      <span class="inline-block text-[11px] font-semibold tracking-[1.5px] uppercase
-                   text-rose-300/60 bg-[#611232]/30 border border-[#611232]/40 rounded-full px-4 py-1.5">
-        Fechas próximamente
-      </span>
-    </p>
-    @endif
+    </div>
 
   </div>
 </section>

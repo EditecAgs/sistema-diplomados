@@ -1,7 +1,7 @@
 <section class="w-full bg-[#611232] py-14 px-6">
   <div class="max-w-5xl mx-auto">
 
-    <p class="text-[11px] font-medium tracking-[2.5px] uppercase text-white/50 mb-8 text-center">
+    <p class="text-[16px] font-medium tracking-[2.5px] uppercase text-white mb-8 text-center">
       Información general
     </p>
 
@@ -9,9 +9,9 @@
 
       @foreach ([
         ['icon' => 'clock',   'value' => '120', 'unit' => 'hrs', 'desc' => 'Duración'],
-        ['icon' => 'grid',    'value' => '5',   'unit' => '',    'desc' => 'Módulos'],
-        ['icon' => 'monitor', 'value' => 'Virtual', 'unit' => '', 'desc' => 'Modalidad'],
-        ['icon' => 'users',   'value' => 'Abierto', 'unit' => '', 'desc' => 'Dirigido a ingenieros'],
+        ['icon' => 'grid',    'value' => '4',   'unit' => '',    'desc' => 'Módulos'],
+        ['icon' => 'monitor', 'value' => 'Teórico-práctica', 'unit' => '', 'desc' => 'Modalidad'],
+        ['icon' => 'users',   'value' => 'Abierto', 'unit' => '', 'desc' => 'Profesionistas y Docentes'],
       ] as $stat)
       <div class="bg-white/7 hover:bg-white/12 border border-white/12 rounded-xl p-6 flex flex-col items-center text-center gap-1 transition-colors duration-200">
 
@@ -28,10 +28,10 @@
           @endif
         </div>
 
-        <div class="text-3xl font-bold text-white leading-none">
-          {{ $stat['value'] }}<span class="text-sm font-normal text-white/50 ml-1">{{ $stat['unit'] }}</span>
+        <div class="text-2xl font-bold text-white leading-none">
+          {{ $stat['value'] }}<span class="text-sm font-normal text-white ml-1">{{ $stat['unit'] }}</span>
         </div>
-        <div class="text-[11px] uppercase tracking-wide text-white/45 mt-1">{{ $stat['desc'] }}</div>
+        <div class="text-[11px] uppercase tracking-wide text-white mt-1">{{ $stat['desc'] }}</div>
 
       </div>
       @endforeach
