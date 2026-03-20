@@ -1,4 +1,4 @@
-@props(['id', 'num', 'nombre', 'short', 'temas' => [], 'imagen' => null])
+@props(['id', 'num', 'nombre', 'short', 'temas' => [], 'imagen' => null, 'description'])
 
 <div class="bg-white border border-[#611232]/12 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[#611232]/10 transition-all duration-200 modulo-card"
      data-id="{{ $id }}"
@@ -6,7 +6,8 @@
      data-nombre="{{ $nombre }}"
      data-short="{{ $short }}"
      data-temas="{{ json_encode($temas) }}"
-     data-imagen="{{ $imagen ? asset('images/' . $imagen) : '' }}">
+     data-imagen="{{ $imagen ? asset('images/' . $imagen) : '' }}"
+    data-description="{{ $description }}">
 
     <div class="h-32 bg-[#1a0510] flex items-center justify-center overflow-hidden">
         @if ($imagen)

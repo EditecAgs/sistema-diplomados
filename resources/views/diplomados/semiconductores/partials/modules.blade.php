@@ -1,4 +1,4 @@
-<section class="w-full bg-[#faf7f8] py-20 px-6">
+<section class="w-full bg-[#faf7f8] py-20 px-6" id="modules">
   <div class="max-w-5xl mx-auto">
     <p class="text-[11px] font-medium tracking-[2.5px] uppercase text-[#611232] mb-2">
       Contenido académico
@@ -15,6 +15,7 @@
             :short="$mod['short']"
             :temas="$mod['temas']"
             :imagen="$mod['imagen'] ?? null"
+            :description="$mod['description'] ?? ''"
         />
       @endforeach
     </div>
