@@ -212,7 +212,7 @@
                         <label class="text-[15px] font-semibold tracking-[1.5px] uppercase text-gray-800">
                             Carta compromiso <span class="text-red-600">*</span>
                         </label>
-                        <a href="{{ asset('docs/carta-compromiso.pdf') }}" download
+                        <a href="{{ asset('documents/CartaCompromiso_DiplomadoASICs.docx') }}" download
                         class="flex items-center gap-2.5 px-4 py-3 bg-[#B9925B]/95 border border-[#B9925B] rounded-xl text-[13px] text-white hover:text-[#9a7440] hover:bg-[#B9925B]/15 transition-all duration-200">
                             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
