@@ -20,6 +20,12 @@ return [
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
 
+    'paths' => [
+        'login' => '/admin/login',
+        'password-reset' => '/admin/password/reset',
+        'verification' => '/admin/email/verify',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
