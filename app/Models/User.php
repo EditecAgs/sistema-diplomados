@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function inscriptionStatuses()
+    {
+        return $this->hasMany(InscriptionStatus::class, 'id_user');
+    }
 }

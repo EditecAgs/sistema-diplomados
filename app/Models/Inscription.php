@@ -35,4 +35,8 @@ class Inscription extends Model
     {
         return $this->belongsTo(Municipality::class);
     }
+     public function status()
+    {
+        return $this->hasOne(InscriptionStatus::class, 'id_inscription');
+    }
 }
