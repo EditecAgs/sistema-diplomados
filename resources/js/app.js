@@ -1,6 +1,10 @@
 import "./bootstrap";
 import { initCircuits } from "./circuits.js";
 import { initModulos } from "./modules.js";
+import Alpine from "alpinejs";
+
+window.Alpine = Alpine;
+Alpine.start();
 
 document.addEventListener("DOMContentLoaded", () => {
     // ── Circuitos y módulos ──
