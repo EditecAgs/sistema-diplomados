@@ -7,24 +7,26 @@ use App\Models\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\InscriptionStatus;
-
+use App\Exports\AceptadosExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 
 class DiplomadosController extends Controller
 {
     public function asics(){
+
         $inscriptions = Inscription::with(['state', 'municipality'])
         ->whereDoesntHave('status')
-        ->get();
+        ->paginate(10);
 
         $aceptadas = Inscription::with(['state', 'municipality', 'status'])
         ->whereHas('status', fn($q) => $q->where('status', 'aceptado'))
-        ->get();
+        ->paginate(10);
 
         $rechazadas = Inscription::with(['state', 'municipality', 'status'])
         ->whereHas('status', fn($q) => $q->where('status', 'rechazado'))
-        ->get();
+        ->paginate(10);
 
         $requests  = Inscription::count();
         $aceptados  = InscriptionStatus::where('status', 'aceptado')->count();
@@ -74,7 +76,7 @@ class DiplomadosController extends Controller
                 'id_user'        => Auth::id(),
             ]);
 
-            return redirect()->back()->with('success', 'La inscripción fue aceptada correctamente.');
+            return redirect()->route('admin.diplomados.asics')->with('success', 'La inscripción fue aceptada correctamente.');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocurrió un error al procesar la aceptación.');
@@ -101,5 +103,20 @@ class DiplomadosController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocurrió un error al procesar el rechazo.');
         }
+    }
+
+    public function exportAceptados()
+    {
+        $aceptadas = Inscription::whereHas('status', function($query) {
+            $query->where('status', 'aceptado');
+        })->with(['status.user', 'status.graduate'])->get();
+
+        if ($aceptadas->isEmpty()) {
+            return back()->with('error', 'No hay solicitudes aceptadas para exportar.');
+        }
+
+        $nombreArchivo = 'solicitudes_aceptadas_' . date('Y-m-d_His') . '.xlsx';
+        
+        return Excel::download(new AceptadosExport($aceptadas), $nombreArchivo);
     }
 }
