@@ -22,12 +22,13 @@ Route::post('/admin/logout', [AuthController::class, 'logout'])->name('auth.logo
 Route::middleware('auth')->group(function(){
     Route::get('/admin/dashboard', function () {
         return view('admin.pages.dashboard');
-    })->name('dashboard');
+    })->name('admin.dashboard');
     Route::get("/admin/graduates/asics",[DiplomadosController::class, 'asics'])->name('admin.diplomados.asics');
     Route::get("/admin/graduates/asics/download/cv/{id}",[DiplomadosController::class, 'download_cv'])->name('asics.cv');
     Route::get("/admin/graduates/asics/download/letter/{id}",[DiplomadosController::class, 'download_letter'])->name('asics.letter');
     Route::get("/admin/graduates/asics/download/support/{id}",[DiplomadosController::class, 'download_support'])->name('asics.support');
     Route::post('/admin/asics/{id}/aceptar', [DiplomadosController::class, 'accepted'])->name('asics.accepted');
     Route::post('/admin/asics/{id}/rechazar', [DiplomadosController::class, 'rejected'])->name('asics.rejected');
+    Route::get('/admin/asics/exportar-aceptados', [DiplomadosController::class, 'exportAceptados'])->name('admin.asics.exportar.aceptados');
 });
 

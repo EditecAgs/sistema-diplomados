@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gray-100">
 
-    <div class="flex h-screen">
+    <div x-data="{ collapsed: false }" x-init="$store.sidebar = { collapsed: false, toggle() { this.collapsed = !this.collapsed } }" class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
         @include('admin.partials.admin-sidebar')
 
@@ -20,7 +20,7 @@
             @include('admin.partials.admin-navbar')
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-y-auto p-4 md:p-6">
+            <main class="flex-1 overflow-y-auto bg-gray-100 p-6">
                 @yield('content')
             </main>
 
@@ -29,11 +29,10 @@
         </div>
     </div>
 
-    {{-- Librerías globales -- van antes del stack para que estén disponibles --}}
+    {{-- Librerías globales --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{-- Scripts específicos de cada vista --}}
     @stack('scripts')
-
 </body>
 </html>
