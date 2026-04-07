@@ -1,23 +1,20 @@
-<div id="modal-status-{{ $inscription->id }}"
+<div id="modal-rechazado-{{ $inscription->id }}"
      class="fixed inset-0 bg-black/50 overflow-y-auto h-full w-full hidden z-50 flex items-start justify-center p-6">
 
     <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-xl my-8">
 
-        {{-- Header con color según estado --}}
-        <div class="rounded-t-2xl px-6 py-4 flex items-center justify-between"
-             style="background-color: {{ $inscription->status->status == 'aceptado' ? '#16a34a' : ($inscription->status->status == 'rechazado' ? '#dc2626' : '#611232') }}">
+        {{-- Header con color rojo --}}
+        <div class="bg-red-600 rounded-t-2xl px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 bg-white/15 rounded-lg flex items-center justify-center">
-                    <i class="fas {{ $inscription->status->status == 'aceptado' ? 'fa-check-circle' : ($inscription->status->status == 'rechazado' ? 'fa-times-circle' : 'fa-clock') }} text-white text-sm"></i>
+                    <i class="fas fa-times-circle text-white text-sm"></i>
                 </div>
                 <div>
-                    <h3 class="text-white font-semibold text-[15px]">
-                        {{ $inscription->status->status == 'aceptado' ? 'Solicitud Aceptada' : ($inscription->status->status == 'rechazado' ? 'Solicitud Rechazada' : 'Detalles de la evaluación') }}
-                    </h3>
-                    <p class="text-white/70 text-[11px]">{{ $inscription->first_name }} {{ $inscription->last_name }}</p>
+                    <h3 class="text-white font-semibold text-[15px]">Solicitud Rechazada</h3>
+                    <p class="text-red-200 text-[11px]">{{ $inscription->first_name }} {{ $inscription->last_name }}</p>
                 </div>
             </div>
-            <button onclick="closeModalStatus({{ $inscription->id }})"
+            <button onclick="closeModalRechazado({{ $inscription->id }})"
                     class="w-7 h-7 bg-white/15 rounded-full flex items-center justify-center hover:bg-white/25 transition">
                 <i class="fas fa-xmark text-white text-xs"></i>
             </button>
@@ -26,40 +23,34 @@
         {{-- Body --}}
         <div class="p-6 max-h-[70vh] overflow-y-auto">
 
-            {{-- Estado y motivo --}}
+            {{-- Estado y motivo destacado --}}
             <div class="mb-6">
                 <div class="flex items-center gap-3 mb-4">
-                    @if($inscription->status->status == 'aceptado')
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-[11px] uppercase tracking-wide text-green-600 font-semibold">Estado actual</p>
-                            <p class="text-[16px] font-bold text-green-700">Aceptado</p>
-                        </div>
-                    @else
-                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-times-circle text-red-600 text-xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-[11px] uppercase tracking-wide text-red-600 font-semibold">Estado actual</p>
-                            <p class="text-[16px] font-bold text-red-700">Rechazado</p>
-                        </div>
-                    @endif
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-times-circle text-red-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wide text-red-600 font-semibold">Estado actual</p>
+                        <p class="text-[16px] font-bold text-red-700">Rechazado</p>
+                    </div>
                 </div>
 
-                {{-- Motivo del rechazo (si existe) --}}
+                {{-- Motivo del rechazo (destacado) --}}
                 @if($inscription->status->motivo)
-                    <div class="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-4">
+                    <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
                         <div class="flex items-start gap-2">
-                            <i class="fas fa-comment-dots text-amber-500 text-sm mt-0.5"></i>
+                            <i class="fas fa-comment-dots text-red-500 text-sm mt-0.5"></i>
                             <div>
-                                <p class="text-[11px] font-semibold uppercase tracking-wide text-amber-700 mb-1">
+                                <p class="text-[11px] font-semibold uppercase tracking-wide text-red-700 mb-1">
                                     Motivo del rechazo
                                 </p>
-                                <p class="text-[13px] text-gray-700">{{ $inscription->status->motivo }}</p>
+                                <p class="text-[14px] text-gray-800 leading-relaxed">{{ $inscription->status->motivo }}</p>
                             </div>
                         </div>
+                    </div>
+                @else
+                    <div class="bg-gray-50 border-l-4 border-gray-400 rounded-lg p-4">
+                        <p class="text-[13px] text-gray-500">No se especificó un motivo</p>
                     </div>
                 @endif
             </div>
@@ -84,9 +75,10 @@
                             {{ $inscription->status->created_at ? $inscription->status->created_at->format('d/m/Y H:i') : 'N/A' }}
                         </p>
                     </div>
-                    <div>
+                    <div class="sm:col-span-2">
                         <p class="text-[10px] uppercase tracking-wide text-gray-400 mb-0.5">Email del evaluador</p>
                         <p class="text-[13px] font-semibold text-gray-800 break-all">
+                            <i class="fas fa-envelope text-gray-400 mr-1"></i>
                             {{ $inscription->status->user->email ?? 'N/A' }}
                         </p>
                     </div>
@@ -208,7 +200,7 @@
 
         {{-- Footer --}}
         <div class="px-6 py-4 border-t border-gray-100 rounded-b-2xl">
-            <button onclick="closeModalStatus({{ $inscription->id }})"
+            <button onclick="closeModalRechazado({{ $inscription->id }})"
                     class="w-full py-2.5 rounded-lg border border-gray-200 text-[13px] text-gray-600 hover:bg-gray-50 transition">
                 Cerrar
             </button>
