@@ -10,6 +10,7 @@ use Illuminate\Database\UniqueConstraintViolationException;
 use App\Mail\InscripcionConfirmada;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 
 
@@ -84,6 +85,28 @@ class SemiconductoresController extends Controller
                 'foto'        => 'inv-3.jpg',
                 'iniciales'   => 'IL',
             ],
+            [
+                'nombre'      => 'Fátima Maricela García Khols',
+                'rol'         => 'Colaborador',
+                'institucion' => 'Instituto Tecnológico de Aguascalientes',
+                'foto'        => 'inv-5.jpeg',
+                'iniciales'   => 'FMGK',
+            ],
+            [
+                'nombre'      => 'Alejandra Marquez Rodríguez',
+                'rol'         => 'Colaborador',
+                'institucion' => 'Instituto Tecnológico de Aguascalientes',
+                'foto'        => 'inv-6.jpeg',
+                'iniciales'   => 'AMR',
+            ],
+            [
+                'nombre'      => 'Uriel Jaramillo Toral',
+                'rol'         => 'Colaborador',
+                'institucion' => 'Instituto Tecnológico de Aguascalientes',
+                'foto'        => 'inv-6.jpg',
+                'iniciales'   => 'UJT',
+            ],
+
         ];
         $fechas = [
             [
@@ -188,9 +211,18 @@ class SemiconductoresController extends Controller
     }
     public function register(){
         if (Inscription::count() >= 300) {
-            return redirect()->route('index')
+            return redirect()->route('semiconductores.index')
             ->with('cupo_lleno', 'Lo sentimos, el cupo del diplomado está completo.');
         }
+
+        $fechaCierre = Carbon::parse('2026-04-08 23:59:59');
+        $ahora = Carbon::now();
+    
+        if ($ahora->gte($fechaCierre)) {
+            $mensaje = 'El período de inscripción cerró el ' . $fechaCierre->format('d/m/Y \a \l\a\s h:i A') . '. Gracias por tu interés.';
+            return redirect()->route('semiconductores.index')->with('registro_cerrado', $mensaje);
+        }
+
         $title = 'Registro';
         $states = State::all();
         $municipalities = collect();
@@ -212,6 +244,14 @@ class SemiconductoresController extends Controller
             return back()->withErrors([
                 'general' => 'Lo sentimos, el cupo del diplomado está completo. No es posible recibir más solicitudes en este momento.',
             ]);
+        }
+
+        $fechaCierre = Carbon::parse('2026-04-08 23:59:59');
+        $ahora = Carbon::now();
+    
+        if ($ahora->gte($fechaCierre)) {
+            $mensaje = 'El período de inscripción cerró el ' . $fechaCierre->format('d/m/Y \a \l\a\s h:i A') . '. Gracias por tu interés.';
+            return redirect()->route('semiconductores.index')->with('registro_cerrado', $mensaje);
         }
 
         $request->validate(
