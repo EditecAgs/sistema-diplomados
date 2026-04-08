@@ -325,4 +325,19 @@
             });
         </script>
     @endif
+    @if (session('registro_cerrado'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Registro Cerrado',
+                    text: '{{ session('registro_cerrado') }}',
+                    confirmButtonText: 'Entendido',
+                    confirmButtonColor: '#611232',
+                    backdrop: true
+                });
+            });
+        </script>
+    @endif
+
 @endsection
