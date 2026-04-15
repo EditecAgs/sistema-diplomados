@@ -215,7 +215,7 @@ class SemiconductoresController extends Controller
             ->with('cupo_lleno', 'Lo sentimos, el cupo del diplomado está completo.');
         }
 
-        $fechaCierre = Carbon::parse('2026-04-08 23:59:59');
+        $fechaCierre = Carbon::parse('2026-04-16 06:00:00');
         $ahora = Carbon::now();
     
         if ($ahora->gte($fechaCierre)) {
@@ -246,7 +246,7 @@ class SemiconductoresController extends Controller
             ]);
         }
 
-        $fechaCierre = Carbon::parse('2026-04-08 23:59:59');
+        $fechaCierre = Carbon::parse('2026-04-16 06:00:00');
         $ahora = Carbon::now();
     
         if ($ahora->gte($fechaCierre)) {
