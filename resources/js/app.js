@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 const res = await fetch(
-                    `/diplomado/asics/api/municipios/${stateId}`,
+                    `/diplomados/diplomado/asics/api/municipios/${stateId}`,
                 );
                 const data = await res.json();
 
