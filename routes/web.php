@@ -11,7 +11,7 @@ Route::get("/diplomado/asics", [SemiconductoresController::class, 'index'])->nam
 Route::get("/plataforma/login", [AuthController::class, 'login'])->name('login');
 Route::get("/diplomado/asics/register",  [SemiconductoresController::class, 'register'])->name('semiconductores.register');
 Route::post("/diplomado/asics/register", [SemiconductoresController::class, 'store'])->name('semiconductores.registro.store');
-Route::get("/api/municipios/{stateId}", [SemiconductoresController::class, 'municipiosPorEstado'])->name('api.municipios');
+Route::get("/diplomado/asics/api/municipios/{stateId}", [SemiconductoresController::class, 'municipiosPorEstado'])->name('api.municipios');
 
 
 Route::get('/admin/login', [AuthController::class, 'showLogin'])->name('admin.login');
