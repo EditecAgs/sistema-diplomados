@@ -35,8 +35,22 @@ class Inscription extends Model
     {
         return $this->belongsTo(Municipality::class);
     }
-     public function status()
+
+    public function status()
     {
-        return $this->hasOne(InscriptionStatus::class, 'id_inscription');
+        return $this->hasOne(InscriptionStatus::class, 'id_inscription')->latest();
+    }
+
+    // Relación para obtener el diplomado a través del estado
+    public function graduate()
+    {
+        return $this->hasOneThrough(
+            Graduate::class,
+            InscriptionStatus::class,
+            'id_inscription', // Foreign key en inscription_status
+            'id', // Foreign key en graduates
+            'id', // Local key en inscriptions
+            'id_graduate' // Local key en inscription_status
+        );
     }
 }

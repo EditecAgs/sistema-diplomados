@@ -5,6 +5,7 @@ use App\Http\Controllers\SemiconductoresController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Admin\DiplomadosController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get("/", [IndexController::class, 'index'])->name('index');
 Route::get("/diplomado/asics", [SemiconductoresController::class, 'index'])->name('semiconductores.index');
@@ -20,9 +21,7 @@ Route::post('/admin/logout', [AuthController::class, 'logout'])->name('auth.logo
 
 
 Route::middleware('auth')->group(function(){
-    Route::get('/admin/dashboard', function () {
-        return view('admin.pages.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get("/admin/graduates/asics",[DiplomadosController::class, 'asics'])->name('admin.diplomados.asics');
     Route::get("/admin/graduates/asics/download/cv/{id}",[DiplomadosController::class, 'download_cv'])->name('asics.cv');
     Route::get("/admin/graduates/asics/download/letter/{id}",[DiplomadosController::class, 'download_letter'])->name('asics.letter');
