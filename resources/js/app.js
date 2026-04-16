@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!stateId) return;
 
             try {
-                const res = await fetch(`/api/municipios/${stateId}`);
+                const res = await fetch(
+                    `/diplomado/asics/api/municipios/${stateId}`,
+                );
                 const data = await res.json();
 
                 data.forEach((m) =>
